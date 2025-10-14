@@ -6,7 +6,9 @@ function fn() {               // показує різницю між const і l
   personVar = { name: 'Emperor' };
   console.log(personConst, personVar);
 }
+fn();
 
 function createUser(name, city) {  // створює користувача з ім'ям і містом
   return { name, city };
 }
+console.log(createUser('Marcus Aurelius', 'Roma'));
