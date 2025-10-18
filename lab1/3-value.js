@@ -1,7 +1,7 @@
-const plusObj = (val) => {
-    val.n = val.n + 2;
-};
+function incObj(num) {
+    num.n = num.n + 2;
+}
 
-const data = { n: 5 };
-plusObj(data);
-console.dir(data);
+const obj = { n: 5 };
+incObj(obj);
+console.dir(obj);
