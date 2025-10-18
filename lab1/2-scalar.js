@@ -1,8 +1,9 @@
-function plus(x) {
-    return x + 2;
+const inc = (n) => {
+    n = n + 1;
+    return n;
 }
 
-const num1 = 5;
-const num2 = plus(num1);
+const a = 5;
+const b = inc(a);
 
-console.dir({ num1, num2 });
+console.dir({a, b});
