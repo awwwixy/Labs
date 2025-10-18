@@ -1,15 +1,15 @@
-function average(a, b) {      // середнє арифметичне
+function average(a, b) {      
   return (a + b) / 2;
 }
 
-function square(x) {          // квадрат 
+function square(x) {          
   return x * x;
 }
 
-function cube(x) {            // куб 
+function cube(x) {            
   return x * x * x;
 }
-function calculate() {        // створює масив середніх між квадратом і кубом
+function calculate() {        
   const array = [];
   for (let i = 0; i <= 9; i++) {
     const s = square(i);
