@@ -1,4 +1,4 @@
-function range(start, end) {  // створює масив чисел від start до end
+function range(start, end) {  
  let array = [];
     for (let i = start; i <= end; i++)
         array.push(i);
@@ -6,7 +6,7 @@ function range(start, end) {  // створює масив чисел від sta
 }
 console.log(range(15, 30));
 
-function rangeOdd(start, end) {  // масив лише непарних чисел
+function rangeOdd(start, end) {  
  let array = [];
     for (let i = start; i <= end; i++)
         if (i % 2 === 1) {
