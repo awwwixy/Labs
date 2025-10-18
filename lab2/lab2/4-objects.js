@@ -1,4 +1,4 @@
-function fn() {               // показує різницю між const і let для об'єктів
+function fn() {               
   const personConst = { name: 'Marcus' };
   let personVar = { name: 'Aurelius' };
   personConst.name = 'Marcus Aurelius';
@@ -8,7 +8,7 @@ function fn() {               // показує різницю між const і l
 }
 fn();
 
-function createUser(name, city) {  // створює користувача з ім'ям і містом
+function createUser(name, city) {  
   return { name, city };
 }
 console.log(createUser('Marcus Aurelius', 'Roma'));
