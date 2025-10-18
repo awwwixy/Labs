@@ -1,12 +1,13 @@
-const items = [true, 'hi', 5, 10, -300, false, 'word', null, {}, 'test', 0];
+const array = [true, 'hello', 5, 12, -200, false, false, 'word', null, {}, 'test', 0, undefined, [1, 2, 3]];
 
-const counts = {};
-for (const el of items) {
-    const type = typeof el;
-    if (!(type in counts)) {
-        counts[type] = 0;
+const typeCount = {};
+
+for (const item of array) {
+    const type = typeof item;
+    if (!(type in typeCount)) {
+        typeCount[type] = 0;
     }
-    counts[type]++;
+    typeCount[type]++;
 }
 
-console.log(counts);
+console.log(typeCount);
