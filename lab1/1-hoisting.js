@@ -1,7 +1,7 @@
-function add() {
-    console.log(sum);
-    var sum = 5 + 10;
-    console.log(sum);
+function show() {
+    console.log(total);
+    var total = 5 + 10;
+    console.log(total);
 }
 
-add();
+show();
