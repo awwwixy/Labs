@@ -23,7 +23,7 @@ function array() {
   return access;
 }
 
-// приклад використання
+
 const arr = array();
 
 arr.push("first");
