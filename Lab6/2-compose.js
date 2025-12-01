@@ -1,17 +1,41 @@
 "use strict";
 
-function compose(...fns) {
-  return function (value) {
-    let result = value;
-    for (let i = fns.length - 1; i >= 0; i--) {
-      result = fns[i](result);
+function array() {
+  const data = [];
+
+  function access(index) {
+    if (typeof index === "number") {
+      return data[index];
     }
-    return result;
+    if (index === undefined) {
+      return data.pop();
+    }
+  }
+
+  access.push = function(value) {
+    data.push(value);
   };
+
+  access.pop = function() {
+    return data.pop();
+  };
+
+  return access;
 }
 
-const add2 = x => x + 2;
-const mult3 = x => x * 3;
+// приклад
+const arr = array();
 
-const combined = compose(mult3, add2);
-console.log(combined(5)); // 21
+arr.push("first");
+arr.push("second");
+arr.push("third");
+
+console.log(arr(0)); // first
+console.log(arr(1)); // second
+console.log(arr(2)); // third
+
+console.log(arr.pop()); // third
+console.log(arr.pop()); // second
+console.log(arr.pop()); // first
+
+console.log(arr.pop()); // undefined
