@@ -1,41 +1,38 @@
 "use strict";
 
-function array() {
-  const data = [];
+const compose = (...funcs) => {
+  const listeners = [];
 
-  function access(index) {
-    if (typeof index === "number") {
-      return data[index];
-    }
-    if (index === undefined) {
-      return data.pop();
-    }
-  }
+  const run = value => {
+    if (funcs.length === 0) return value;
 
-  access.push = function(value) {
-    data.push(value);
+    let current = value;
+
+    try {
+      for (let i = funcs.length - 1; i >= 0; i--) {
+        current = funcs[i](current);
+      }
+      return current;
+    } catch (err) {
+      for (const l of listeners) {
+        l(err);
+      }
+      return undefined;
+    }
   };
 
-  access.pop = function() {
-    return data.pop();
+  run.on = (type, handler) => {
+    if (type === "error") {
+      listeners.push(handler);
+    }
   };
 
-  return access;
-}
+  return run;
+};
 
-// приклад
-const arr = array();
+const inc = x => x + 1;
+const twice = x => x * 2;
+const cube = x => x ** 3;
 
-arr.push("first");
-arr.push("second");
-arr.push("third");
-
-console.log(arr(0)); // first
-console.log(arr(1)); // second
-console.log(arr(2)); // third
-
-console.log(arr.pop()); // third
-console.log(arr.pop()); // second
-console.log(arr.pop()); // first
-
-console.log(arr.pop()); // undefined
+const test = compose(inc, twice, cube);
+console.log(test(5));
