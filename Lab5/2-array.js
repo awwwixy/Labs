@@ -1,36 +1,41 @@
 "use strict";
 
-const array = function () {
+function array() {
   const data = [];
 
-  const get = function (i) {
-    return data[i];
-  };
+  function access(arg) {
+    if (typeof arg === "number") {
+      return data[arg];
+    }
+    if (arg === undefined) {
+      return data.pop();
+    }
+  }
 
-  get.push = function (value) {
+  access.push = function(value) {
     data.push(value);
-    return get;
   };
 
-  get.pop = function () {
+  access.pop = function() {
     return data.pop();
   };
 
-  return get;
-};
+  return access;
+}
 
+// приклад використання
 const arr = array();
 
 arr.push("first");
 arr.push("second");
 arr.push("third");
 
-console.log(arr(0)); 
-console.log(arr(1)); 
-console.log(arr(2)); 
+console.log(arr(0)); // first
+console.log(arr(1)); // second
+console.log(arr(2)); // third
 
-console.log(arr.pop()); 
-console.log(arr.pop());
-console.log(arr.pop()); 
+console.log(arr.pop()); // third
+console.log(arr.pop()); // second
+console.log(arr.pop()); // first
 
-console.log(arr.pop()); 
+console.log(arr.pop()); // undefined
