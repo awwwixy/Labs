@@ -8,7 +8,6 @@ function pipe(value, ...fns) {
   return result;
 }
 
-// приклад
 const add2 = x => x + 2;
 const mult3 = x => x * 3;
 
