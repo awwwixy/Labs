@@ -1,16 +1,27 @@
 "use strict";
 
-function seq(...funcs) {
-  return function(start) {
-    let value = start;
-    for (let f of funcs) {
-      value = f(value);
-    }
-    return value;
-  };
-}
+const inc = x => x + 1;
+const twice = x => x * 2;
+const cube = x => x ** 3;
 
-// приклади
-console.log(seq(x => x + 7, x => x * 2)(5)); // 17
-console.log(seq(x => x * 2, x => x + 7)(5)); // 24
-console.log(seq(x => x + 1, x => x - 2, x => x * 3, x => x - 4)(7)); // 3
+const pipe = (...funcs) => {
+  for (const fn of funcs) {
+    if (typeof fn !== "function") {
+      throw new Error("All arguments must be functions");
+    }
+  }
+
+  return value => {
+    let result = value;
+    for (const fn of funcs) {
+      result = fn(result);
+    }
+    return result;
+  };
+};
+
+const fn1 = pipe(inc, twice, cube);
+console.log(fn1(5));
+
+const fn2 = pipe(twice, inc);
+console.log(fn2(7));
