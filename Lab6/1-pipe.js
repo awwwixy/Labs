@@ -1,14 +1,16 @@
 "use strict";
 
-function pipe(value, ...fns) {
-  let result = value;
-  for (let fn of fns) {
-    result = fn(result);
-  }
-  return result;
+function seq(...funcs) {
+  return function(start) {
+    let value = start;
+    for (let f of funcs) {
+      value = f(value);
+    }
+    return value;
+  };
 }
 
-const add2 = x => x + 2;
-const mult3 = x => x * 3;
-
-console.log(pipe(5, add2, mult3)); // 21
+// приклади
+console.log(seq(x => x + 7, x => x * 2)(5)); // 17
+console.log(seq(x => x * 2, x => x + 7)(5)); // 24
+console.log(seq(x => x + 1, x => x - 2, x => x * 3, x => x - 4)(7)); // 3
