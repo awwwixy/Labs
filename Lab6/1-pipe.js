@@ -1,23 +1,15 @@
 "use strict";
 
-const inc = (x) => ++x;
-const twice = (x) => x * 2;
-const cube = (x) => x ** 3;
-
-const pipe = (...fns) => {
-  for (const f of fns) {
-    if (typeof f !== "function") {
-      throw new Error("All compose arguments should be functions");
-    }
+function pipe(value, ...fns) {
+  let result = value;
+  for (let fn of fns) {
+    result = fn(result);
   }
+  return result;
+}
 
-  return (x) => {
-    return fns.reduce((v, f) => f(v), x);
-  };
-};
+// приклад
+const add2 = x => x + 2;
+const mult3 = x => x * 3;
 
-const f1 = pipe(inc, twice, cube);
-console.log(f1(5)); // 1728
-
-const f2 = pipe(inc, inc);
-console.log(f2(7)); // 9
+console.log(pipe(5, add2, mult3)); // 21
