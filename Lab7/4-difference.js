@@ -1,16 +1,17 @@
 "use strict";
 
-const array1 = [7, -2, 10, 5, 0];
-const array2 = [0, 10];
+const a1 = [7, -2, 10, 5, 0];
+const a2 = [0, 10];
 
-function difference(array1, array2) {
-  const result = [];
-  for (const item of array1) {
-    if (!array2.includes(item)) {
-      result.push(item);
+function difference(a, b) {
+  const out = [];
+  for (let x of a) {
+    if (!b.includes(x)) {
+      out.push(x);
     }
   }
-  return result;
+  return out;
 }
 
-console.log(difference(array1, array2));
+console.log(difference(a1, a2));
+
