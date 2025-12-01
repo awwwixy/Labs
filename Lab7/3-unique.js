@@ -1,11 +1,15 @@
 "use strict";
 
-const data = [2, 1, 1, 3, 2];
+const arr = [2, 1, 1, 3, 2];
 
-function makeUnique(arr) {
-  return Array.from(new Set(arr));
+function unique(a) {
+  const result = [];
+  for (let x of a) {
+    if (!result.includes(x)) {
+      result.push(x);
+    }
+  }
+  return result;
 }
 
-console.log(makeUnique(data));
-
-module.exports = { makeUnique };
+console.log(unique(arr));
