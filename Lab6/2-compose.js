@@ -10,7 +10,6 @@ function compose(...fns) {
   };
 }
 
-// приклад
 const add2 = x => x + 2;
 const mult3 = x => x * 3;
 
